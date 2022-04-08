@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: zenjob-pc
+spec:
+  schedule: "*/30 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: s3-uploader
+            image: dilippanwar/zenjob:v0.0.1
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: ENV
+              value: qa
+            - name: ACCESS_KEY_ID
+              value: <YOUR_ACCESS_KEY_ID>
+            - name: SECRET_ACCESS_KEY
+              value: <YOUR_SECRET_ACCESS_KEY>
+          restartPolicy: OnFailure
