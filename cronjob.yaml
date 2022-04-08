@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: zenjob-pc
 spec:
-  schedule: "*/30 * * * *"
+  schedule: "*/5 * * * *"
   jobTemplate:
     spec:
       template:
